@@ -1,0 +1,25 @@
+USE [KAPSARA]
+GO
+
+/****** Object:  Table [dbo].[BS_WITHDRAWN_TRACKING]    Script Date: 12/17/2017 11:45:27 PM ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [dbo].[BS_WITHDRAWN_TRACKING](
+	[wt_code] [int] IDENTITY(1,1) NOT NULL,
+	[wt_date] [datetime] NOT NULL,
+	[wt_value] [nvarchar](5) NULL,
+	[wt_done_by] [nvarchar](50) NULL,
+	[wt_MemberNo] [nvarchar](50) NOT NULL,
+ CONSTRAINT [PK_BS_WITHDRAWN_TRACKING] PRIMARY KEY CLUSTERED 
+(
+	[wt_code] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+
+

@@ -1,0 +1,168 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site.master.cs" Inherits="SaccoApp.SiteMaster" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head runat="server">
+    <title></title>
+    <link href="~/Styles/Site.css" rel="stylesheet" type="text/css" />
+    
+    <script type="text/javascript">
+        function MySiteFunction(title, msg) {
+            var orignalstring = document.getElementById("sitemsgbox").innerHTML;
+            var newstring = orignalstring.replace("[TITLE]", title);
+            document.getElementById("sitemsgbox").innerHTML = newstring;
+
+            orignalstring = document.getElementById("sitemsgbox").innerHTML;
+            newstring = orignalstring.replace("[MESSAGE]", msg);
+            document.getElementById("sitemsgbox").innerHTML = newstring;
+
+            document.getElementById('sitedimmer').style.visibility = 'visible';
+            document.getElementById('sitedimmer').style.display = 'inline';
+            document.getElementById('sitemsgbox').style.visibility = 'visible';
+            document.getElementById('sitemsgbox').style.display = 'inline';
+        }
+    </script>
+
+
+    <asp:ContentPlaceHolder ID="HeadContent" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <form runat="server">
+    <div class="page_dimmer" id="sitedimmer" style="display:none "> </div> 
+    <div class="msg_box_container" id="sitemsgbox" style="display:none "> 
+    <table class="errorTableRound" cellpadding="5"> 
+    <tr style="background-color:inherit;
+            border-top-left-radius: 20px;
+            border-top-right-radius: 20px;
+            border-bottom-left-radius: 20px;
+            border-bottom-right-radius: 20px;"> 
+    <td colspan="2" style="font-weight:bolder">[TITLE]</td> 
+    </tr> 
+    <tr> 
+    <td>[MESSAGE]</td> <td><asp:TextBox ID="txtProductKey" runat="server" Width="300px"></asp:TextBox></td> 
+    </tr> 
+    <tr> 
+    <td colspan="2" align="center">
+        <asp:Button ID="btnOk" runat="server" Text="OK" OnClick="btnOk_Click" /></td>
+    </tr> 
+    </table> 
+    </div> 
+
+    <div>
+        <div class="header">
+        <table width="100%">
+        <tr>
+        <td>
+            <div class="vendor">
+                <h1 class="h1">
+                    Serene
+                </h1>
+            </div>
+         </td>
+         <td>
+            <div class="title">
+                <h1>
+                    SACCO BOSA</h1>
+            </div>
+         </td>
+         <td>
+            <div class="loginDisplay">
+                <asp:LoginView ID="HeadLoginView" runat="server" EnableViewState="false">
+                    <AnonymousTemplate>
+                        [ <a href="~/aspxLogin.aspx" ID="HeadLoginStatus" runat="server">Log In</a> ]
+                    </AnonymousTemplate>
+                    <LoggedInTemplate>
+                        Welcome <span class="bold"><asp:LoginName ID="HeadLoginName" runat="server" /></span>!
+                        [ <asp:LoginStatus ID="HeadLoginStatus" runat="server" LogoutAction="Redirect" LogoutText="Log Out" LogoutPageUrl="~/"/> ]
+                    </LoggedInTemplate>
+                </asp:LoginView>
+            </div>
+         </td>
+         </tr>
+         </table>
+            <div class="clear hideSkiplink">
+                <asp:Menu ID="NavigationMenu" runat="server" Orientation="Horizontal"  CssClass="menu" 
+                    EnableViewState="false" IncludeStyleBlock="false">
+                    <Items>
+                        <asp:MenuItem NavigateUrl="~/Default.aspx" Text="Home" Value="Home"></asp:MenuItem>
+                        <asp:MenuItem Text="Member Registration" Value="Member Registration">
+                            <asp:MenuItem NavigateUrl="~/aspxMembers.aspx" Text="Members" Value="Members"></asp:MenuItem>
+                            <asp:MenuItem NavigateUrl="~/aspxNextOfKins.aspx" Text="Next of Kins" Value="Next of Kins"></asp:MenuItem>
+                            <asp:MenuItem NavigateUrl="~/aspxStatement.aspx" Text="Statement" Value="Statement"></asp:MenuItem>
+                        </asp:MenuItem>
+                        <asp:MenuItem Text="Shares" Value="Shares">
+                            <asp:MenuItem NavigateUrl="~/aspxShareContribution.aspx" Text="Share Contribution" Value="Share Contribution"></asp:MenuItem>
+                            <asp:MenuItem NavigateUrl="~/aspxShareVariation.aspx" Text="Share Variation" Value="Share Variation"></asp:MenuItem>
+
+                        </asp:MenuItem>
+                        <asp:MenuItem Text="Loans" Value="Loans">
+                            <asp:MenuItem NavigateUrl="~/aspxLoanApplication.aspx" Text="Loan Application" Value="Loan Application"></asp:MenuItem>
+                            <asp:MenuItem NavigateUrl="~/aspxLoanGuarantors.aspx" Text="Loan Guarantors" Value="Loan Guarantors"></asp:MenuItem>
+                            <asp:MenuItem NavigateUrl="~/aspxLoanAppraisal.aspx" Text="Loan Appraisal" Value="Loan Appraisal"></asp:MenuItem>
+                            <asp:MenuItem NavigateUrl="~/aspxLoanEndorsement.aspx" Text="Loan Endorsement" Value="Loan Endorsement"></asp:MenuItem>
+                            <asp:MenuItem NavigateUrl="~/aspxChequeEntry.aspx" Text="Cheque Entry" Value="Cheque Entry"></asp:MenuItem>
+                            <asp:MenuItem NavigateUrl="~/aspxEffectLoanRepayments.aspx" Text="Effect Loan Repayments" Value="Effect Loan Repayments"></asp:MenuItem>
+                            <asp:MenuItem NavigateUrl="~/aspxLoanTransactions.aspx" Text="Loan Transactions" Value="LoanTransactions"></asp:MenuItem>
+                            <asp:MenuItem NavigateUrl="~/aspxLoanBalances.aspx" Text="Loan Balances" Value="Loan Balances"></asp:MenuItem>
+                        </asp:MenuItem>
+                        <asp:MenuItem Text="Other Schemes" Value="Other Schemes">
+                            <asp:MenuItem NavigateUrl="~/aspxBenevolentFund.aspx" Text="Benevolent Fund" Value="Benevolent Fund"></asp:MenuItem>
+                            <asp:MenuItem NavigateUrl="~/aspxMemberSavings.aspx" Text="Member Savings" Value="Member Savings"></asp:MenuItem>
+                        </asp:MenuItem>
+                        <asp:MenuItem Text="Utilities" Value="Utilities">
+                            <asp:MenuItem NavigateUrl="~/aspxDividents.aspx" Text="Dividents" Value="Dividents"></asp:MenuItem>
+                            <asp:MenuItem NavigateUrl="~/aspxPeriodicTransactions.aspx" Text="Periodic Transactions" Value="Periodic Transactions"></asp:MenuItem>
+                            <asp:MenuItem NavigateUrl="~/aspxPeriodicStatements.aspx" Text="Periodic Statements" Value="Periodic Statements"></asp:MenuItem>
+                            <asp:MenuItem NavigateUrl="~/aspxReceiptAllocation.aspx" Text="Receipt Allocation" Value="Receipt Allocation"></asp:MenuItem>
+                            <asp:MenuItem NavigateUrl="~/aspxDormant.aspx" Text="Dormant Members" Value="Dormant Members"></asp:MenuItem>
+                            <asp:MenuItem NavigateUrl="~/aspxMemberWithdrawal.aspx" Text="Member Withdrawal" Value="Member Withdrawal"></asp:MenuItem>
+                            <asp:MenuItem NavigateUrl="~/aspxArchivedMembers.aspx" Text="Archived Members" Value="Archived Members"></asp:MenuItem>
+                            <asp:MenuItem NavigateUrl="~/aspxGuarantorViewing.aspx" Text="Guarantor Viewing" Value="Guarantor Viewing"></asp:MenuItem>
+                            <asp:MenuItem NavigateUrl="~/aspxExportToGL.aspx" Text="Export To GL accounts" Value="Export To GL accounts"></asp:MenuItem>
+                            <asp:MenuItem NavigateUrl="~/aspxTransfers.aspx" Text="Transfers" Value="Transfers"></asp:MenuItem>
+                        </asp:MenuItem>
+                        <asp:MenuItem Text="Setups" Value="Setups">
+                            <asp:MenuItem NavigateUrl="~/aspxParameters.aspx" Text="Parameters" Value="Parameters"></asp:MenuItem>
+                            <asp:MenuItem NavigateUrl="~/aspxLoanTypes.aspx" Text="Loan Types" Value="Loan Types"></asp:MenuItem>
+                            <asp:MenuItem NavigateUrl="~/aspxCompanySetup.aspx" Text="Company Setup" Value="Company Setup"></asp:MenuItem>
+                            <asp:MenuItem NavigateUrl="~/aspxBankSetup.aspx" Text="Bank Setup" Value="Bank Setup"></asp:MenuItem>
+                            <asp:MenuItem NavigateUrl="~/aspxDatabaseSetup.aspx" Text="Database Setup" Value="Database Setup"></asp:MenuItem>
+                            <asp:MenuItem NavigateUrl="~/aspxRejectionReasons.aspx" Text="Rejection Reasons" Value="Rejection Reasons"></asp:MenuItem>
+                            <asp:MenuItem NavigateUrl="~/aspxChangeMemberNo.aspx" Text="Change Member No" Value="Change Member No"></asp:MenuItem>
+                        </asp:MenuItem>
+                        <asp:MenuItem Text="System Administration" Value="System Administration">
+                            <asp:MenuItem NavigateUrl="~/aspxSystemPrivilages.aspx" Text="System Privilages" Selectable="true"/>
+                            <asp:MenuItem NavigateUrl="~/aspxSystemRoles.aspx" Text="System Roles" Selectable="true"/>
+                            <asp:MenuItem NavigateUrl="~/aspxUsers.aspx" Text="User Setup" Selectable="true"/>
+                            <asp:MenuItem NavigateUrl="~/aspxUserPasswordChange.aspx" Text="Change Password" />
+                        </asp:MenuItem>
+                    </Items>
+                </asp:Menu>
+                
+            </div>
+        </div>
+        <div style="background-color:Black;">
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <asp:ContentPlaceHolder ID="workflow" runat="server">
+                <asp:Label ID="lblProcessArea" Width="10%" runat="server" BackColor="Black" 
+                    Font-Bold="False" ForeColor="White">                    
+                       Process Area :
+                </asp:Label>
+                <asp:Label ID="lblWorkFlow" runat="server" BackColor="Black" 
+                    Font-Bold="False" ForeColor="White"></asp:Label>
+            </asp:ContentPlaceHolder>
+        </div>
+        <div class="main">
+            <asp:ContentPlaceHolder ID="MainContent" runat="server"/>
+        </div>
+        <div class="clear">
+        </div>
+    </div>
+    <div class="footer">
+        
+    </div>
+    </form>
+</body>
+</html>

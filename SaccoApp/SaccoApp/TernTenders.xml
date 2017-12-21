@@ -1,0 +1,17 @@
+<Tenders>  
+    <Ravina>  
+        <BillNo>1</BillNo>  
+        <PageNo>10</PageNo>  
+        <Activity>Metals</Activity>  
+    </Ravina>  
+    <Ravina>  
+        <BillNo>2</BillNo>  
+        <PageNo>20</PageNo>  
+        <Activity>Formworks</Activity>  
+    </Ravina>  
+    <Ravina>  
+        <BillNo>3</BillNo>  
+        <PageNo>30</PageNo>  
+        <Activity>SiteWorks</Activity>  
+    </Ravina>  
+</Tenders>

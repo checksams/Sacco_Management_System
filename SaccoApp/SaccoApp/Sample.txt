@@ -1,0 +1,4 @@
+DATABASE=SQLSERVER
+User=Admin
+Password=administrator
+ConnString=we we to ndio nataka kujua

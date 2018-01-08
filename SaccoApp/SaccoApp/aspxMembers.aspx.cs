@@ -565,6 +565,7 @@ namespace SaccoApp
                 cmd.Parameters.Add(new SqlParameter("@v_user", v_user));
                 cmd.Parameters.Add(new SqlParameter("@v_MemberNo", SqlDbType.VarChar));
                 cmd.Parameters["@v_MemberNo"].Direction = ParameterDirection.Output;
+                cmd.Parameters["@v_MemberNo"].Size = 45;
                 //cmd.Parameters["@v_MemberNo"].SqlDbType = SqlDbType.NVarChar;
 
                 cmd.Connection.Open();

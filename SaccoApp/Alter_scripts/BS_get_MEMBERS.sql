@@ -35,6 +35,7 @@ BEGIN -- PROCEDURE BODY
 	and SurName like '%'+ @SurName +'%'
 	and OtherNames like '%'+ @OtherNames +'%'
 	and IDNo like '%'+ @IDNo +'%'
+	order by SurName
   
 END -- BODY
 GO

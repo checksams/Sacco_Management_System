@@ -35,3 +35,17 @@ F:\Developments\SaccoSystem\SaccoApp\SaccoApp\bin\EPPlus.dll
 F:\Developments\SaccoSystem\SaccoApp\SaccoApp\bin\EPPlus.xml
 F:\Developments\SaccoSystem\SaccoApp\SaccoApp\bin\Newtonsoft.Json.dll
 F:\Developments\SaccoSystem\SaccoApp\SaccoApp\bin\Newtonsoft.Json.xml
+F:\Developments\SaccoSystem\SaccoApp\SaccoApp\bin\Microsoft.ReportViewer.WebForms.dll
+F:\Developments\SaccoSystem\SaccoApp\SaccoApp\bin\Microsoft.SqlServer.Types.dll
+F:\Developments\SaccoSystem\SaccoApp\SaccoApp\bin\de\Microsoft.SqlServer.Types.resources.dll
+F:\Developments\SaccoSystem\SaccoApp\SaccoApp\bin\es\Microsoft.SqlServer.Types.resources.dll
+F:\Developments\SaccoSystem\SaccoApp\SaccoApp\bin\fr\Microsoft.SqlServer.Types.resources.dll
+F:\Developments\SaccoSystem\SaccoApp\SaccoApp\bin\it\Microsoft.SqlServer.Types.resources.dll
+F:\Developments\SaccoSystem\SaccoApp\SaccoApp\bin\ja\Microsoft.SqlServer.Types.resources.dll
+F:\Developments\SaccoSystem\SaccoApp\SaccoApp\bin\ko\Microsoft.SqlServer.Types.resources.dll
+F:\Developments\SaccoSystem\SaccoApp\SaccoApp\bin\pt\Microsoft.SqlServer.Types.resources.dll
+F:\Developments\SaccoSystem\SaccoApp\SaccoApp\bin\ru\Microsoft.SqlServer.Types.resources.dll
+F:\Developments\SaccoSystem\SaccoApp\SaccoApp\bin\zh-Hans\Microsoft.SqlServer.Types.resources.dll
+F:\Developments\SaccoSystem\SaccoApp\SaccoApp\bin\zh-Hant\Microsoft.SqlServer.Types.resources.dll
+F:\Developments\SaccoSystem\SaccoApp\SaccoApp\obj\Debug\RdlCompile.cache
+F:\Developments\SaccoSystem\SaccoApp\SaccoApp\obj\Debug\RdlCompile.compiled

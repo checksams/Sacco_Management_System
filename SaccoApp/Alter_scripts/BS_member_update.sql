@@ -78,7 +78,7 @@ SET IMPLICIT_TRANSACTIONS ON
 				set @v_error = 'A Member with this Member No. already exists...'
 				RAISERROR (@v_error, 16,1)
 			end
-			else if not(@MemberNo is null and @MemberNo='')
+			else if not(@MemberNo is null or @MemberNo='')
 			begin
 				select @v_MemberNo=@MemberNo
 			end

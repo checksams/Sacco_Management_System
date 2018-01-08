@@ -121,6 +121,9 @@ namespace SaccoApp
             {
                 v_update_type = "Edit";
                 txtUpdateType.Text = "Edit";
+                btnCancel.Enabled = true;
+                btnSave.Enabled = true;
+                btnDelete.Enabled = true;
                 clearCtrls();
 
             }
@@ -174,9 +177,6 @@ namespace SaccoApp
 
                 cmd.Connection.Close();
                 cmd.Dispose();
-
-
-                cmd.Connection.Open();
 
             }
             catch (Exception ex)

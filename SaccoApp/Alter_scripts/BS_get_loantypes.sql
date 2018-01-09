@@ -16,7 +16,8 @@ BEGIN
 		SELECT LoanCode,LoanType,
 		CONVERT(decimal(19), RepayPeriod)RepayPeriod,
 		CONVERT(decimal(19), Interest)Interest
-		,CONVERT(decimal(19,2), MaxAmount)MaxAmount,Guarantor,
+		,CONVERT(decimal(19,2), MaxAmount)MaxAmount,
+		upper(Guarantor)Guarantor,
 		CONVERT(decimal(19), cr_acc_code)cr_acc_code,cr_acc_sht_desc
 		,CONVERT(decimal(19), dr_acc_code)dr_acc_code,dr_acc_sht_desc,
 		CONVERT(decimal(19), cr_Intr_acc_code)cr_Intr_acc_code,cr_Intr_acc_sht_desc
@@ -31,7 +32,8 @@ BEGIN
 		SELECT LoanCode,LoanType,
 		CONVERT(decimal(19), RepayPeriod)RepayPeriod,
 		CONVERT(decimal(19), Interest)Interest
-		,CONVERT(decimal(19,2), MaxAmount)MaxAmount,Guarantor,
+		,CONVERT(decimal(19,2), MaxAmount)MaxAmount,
+		upper(Guarantor)Guarantor,
 		CONVERT(decimal(19), cr_acc_code)cr_acc_code,cr_acc_sht_desc
 		,CONVERT(decimal(19), dr_acc_code)dr_acc_code,dr_acc_sht_desc,
 		CONVERT(decimal(19), cr_Intr_acc_code)cr_Intr_acc_code,cr_Intr_acc_sht_desc

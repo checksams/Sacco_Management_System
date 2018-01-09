@@ -22,6 +22,132 @@ namespace SaccoApp {
         protected global::Microsoft.Reporting.WebForms.ReportViewer rvAppliedLoans;
         
         /// <summary>
+        /// pup control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::ASP.Web.UI.PopupControl.PopupPanel pup;
+        
+        /// <summary>
+        /// PopupWindow2 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::ASP.Web.UI.PopupControl.PopupWindow PopupWindow2;
+        
+        /// <summary>
+        /// lbl control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbl;
+        
+        /// <summary>
+        /// txt control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txt;
+        
+        /// <summary>
+        /// PopupWindow3 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::ASP.Web.UI.PopupControl.PopupWindow PopupWindow3;
+        
+        /// <summary>
+        /// lblPopMemberNoSrch control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblPopMemberNoSrch;
+        
+        /// <summary>
+        /// txtPopMemberNoSrch control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtPopMemberNoSrch;
+        
+        /// <summary>
+        /// btnPopSrch control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnPopSrch;
+        
+        /// <summary>
+        /// lblPopMemberSurNameSrch control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblPopMemberSurNameSrch;
+        
+        /// <summary>
+        /// txtPopMemberSurNameSrch control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtPopMemberSurNameSrch;
+        
+        /// <summary>
+        /// btnOK control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnOK;
+        
+        /// <summary>
+        /// lblPopMemberONameSrch control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblPopMemberONameSrch;
+        
+        /// <summary>
+        /// txtPopMemberONameSrch control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtPopMemberONameSrch;
+        
+        /// <summary>
+        /// btnPopCancel control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnPopCancel;
+        
+        /// <summary>
         /// pnlWitnSearch control.
         /// </summary>
         /// <remarks>
@@ -29,15 +155,6 @@ namespace SaccoApp {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Panel pnlWitnSearch;
-        
-        /// <summary>
-        /// Label2 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label2;
         
         /// <summary>
         /// gvWitnSearch control.
@@ -58,15 +175,6 @@ namespace SaccoApp {
         protected global::System.Web.UI.WebControls.Panel pnlSupSearch;
         
         /// <summary>
-        /// Label3 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label3;
-        
-        /// <summary>
         /// gvSupSearch control.
         /// </summary>
         /// <remarks>
@@ -83,15 +191,6 @@ namespace SaccoApp {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Panel pnlGuarSearch;
-        
-        /// <summary>
-        /// lblGvLOV control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblGvLOV;
         
         /// <summary>
         /// gvGuarSearch control.
@@ -913,6 +1012,15 @@ namespace SaccoApp {
         protected global::System.Web.UI.WebControls.TextBox txtWitnsMemberNo;
         
         /// <summary>
+        /// imgBtnWitnsMemberNo control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ImageButton imgBtnWitnsMemberNo;
+        
+        /// <summary>
         /// txtWitMemberNames control.
         /// </summary>
         /// <remarks>
@@ -956,6 +1064,15 @@ namespace SaccoApp {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtSupervMemberNo;
+        
+        /// <summary>
+        /// imgBtnSupMemberNo control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ImageButton imgBtnSupMemberNo;
         
         /// <summary>
         /// txtSupervMemberNames control.
@@ -1219,6 +1336,15 @@ namespace SaccoApp {
         protected global::System.Web.UI.WebControls.TextBox txtGuarMemberNo;
         
         /// <summary>
+        /// imgBtnGuarMemberNo control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ImageButton imgBtnGuarMemberNo;
+        
+        /// <summary>
         /// lblGuarMemberNames control.
         /// </summary>
         /// <remarks>
@@ -1352,5 +1478,68 @@ namespace SaccoApp {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtDateTo;
+        
+        /// <summary>
+        /// lblPopMemberNoSrch0 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblPopMemberNoSrch0;
+        
+        /// <summary>
+        /// txtPopMemberNoSrch0 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtPopMemberNoSrch0;
+        
+        /// <summary>
+        /// btnPopSrch0 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnPopSrch0;
+        
+        /// <summary>
+        /// lblPopMemberSurNameSrch0 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblPopMemberSurNameSrch0;
+        
+        /// <summary>
+        /// txtPopMemberSurNameSrch0 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtPopMemberSurNameSrch0;
+        
+        /// <summary>
+        /// lblPopMemberONameSrch0 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblPopMemberONameSrch0;
+        
+        /// <summary>
+        /// txtPopMemberONameSrch0 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtPopMemberONameSrch0;
     }
 }

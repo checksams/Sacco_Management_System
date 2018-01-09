@@ -45,6 +45,10 @@ namespace SaccoApp
                 {
                     rvAppliedLoans.LocalReport.ReportPath = "Reports/rptAppliedLoans.rdlc";
                     rvAppliedLoans.LocalReport.Refresh();
+                } else if (lblReportName.Text == "Guarantor Listing Report")
+                {
+                    rvAppliedLoans.LocalReport.ReportPath = "Reports/rptGuarantorListing.rdlc";
+                    rvAppliedLoans.LocalReport.Refresh();
                 }
                 Page.ClientScript.RegisterStartupScript(this.GetType(), "myScript", "DisplayReports('Information.','Report ran successfully.');", true);
 
@@ -86,8 +90,138 @@ namespace SaccoApp
                 pnlReports.Visible = true;
 
                 lblReportName.Text = menuSelected;
+
+                if (lblReportName.Text == "Applied Loans Report")
+                {
+                    lblDateFrom.Visible = true;
+                    txtDateFrom.Visible = true;
+                    lblDateTo.Visible = true;
+                    txtDateTo.Visible = true;
+                }
+                else if (lblReportName.Text == "Guarantor Listing Report")
+                {
+                    lblDateFrom.Visible = false;
+                    txtDateFrom.Visible = false;
+                    lblDateTo.Visible = false;
+                    txtDateTo.Visible = false;
+                }
                 //Page.ClientScript.RegisterStartupScript(this.GetType(), "myScript", "MyJavaFunction('Info.','" + menuSelected + "');", true);
             }
+        }
+
+        protected void popupWitnessSearch(object sender, EventArgs e)
+        {
+            pup.HeaderText = "Witnesses";
+            pnlWitnSearch.Visible = true;
+            pnlGuarSearch.Visible = false;
+            pnlSupSearch.Visible = false;
+            pup.ShowPopupWindow();
+        }
+        protected void popupSupervSearch(object sender, EventArgs e)
+        {
+            pup.HeaderText = "Supervisors";
+            pnlWitnSearch.Visible = false;
+            pnlGuarSearch.Visible = false;
+            pnlSupSearch.Visible = true;
+            pup.ShowPopupWindow();
+        }
+        protected void popupGuarSearch(object sender, EventArgs e)
+        {
+            pup.HeaderText = "Guarantors";
+            pnlWitnSearch.Visible = false;
+            pnlGuarSearch.Visible = true;
+            pnlSupSearch.Visible = false;
+            pup.ShowPopupWindow();
+        }
+        protected void HidePopup_Click(object sender, EventArgs e)
+        {
+            pup.HidePopupWindow();
+        }
+        protected void MycloseWindow(object sender, EventArgs e)
+        {
+            pup.HidePopupWindow();
+        }
+
+        protected void btnPopSrch_Click(object sender, EventArgs e)
+        {
+            txtPopMemberNoSrch0.Text = txtPopMemberNoSrch.Text;
+            txtPopMemberSurNameSrch0.Text = txtPopMemberSurNameSrch.Text;
+            txtPopMemberONameSrch0.Text = txtPopMemberONameSrch.Text;
+
+            if (pup.HeaderText == "Witnesses")
+            {
+                gvWitnSearch.DataBind();
+            } else if (pup.HeaderText == "Supervisors")
+            {
+                gvSupSearch.DataBind();
+            }else if (pup.HeaderText == "Guarantors")
+            {
+                gvGuarSearch.DataBind();
+            }
+        }
+        
+        protected void searchTextChange(object sender, EventArgs e)
+        {
+            txtPopMemberNoSrch0.Text = txtPopMemberNoSrch.Text;
+            txtPopMemberSurNameSrch0.Text = txtPopMemberSurNameSrch.Text;
+            txtPopMemberONameSrch0.Text = txtPopMemberONameSrch.Text;
+            if (txtPopMemberNoSrch0.Text == "") { txtPopMemberNoSrch0.Text = "%"; txtPopMemberNoSrch.Text = "%"; }
+            if (txtPopMemberSurNameSrch0.Text == "") { txtPopMemberSurNameSrch0.Text = "%"; txtPopMemberSurNameSrch.Text = "%"; }
+            if (txtPopMemberONameSrch0.Text == "") { txtPopMemberONameSrch0.Text = "%"; txtPopMemberONameSrch.Text = "%"; }
+        }
+        
+        protected void btnOK_Click(object sender, EventArgs e)
+        {
+            if (pup.HeaderText == "Witnesses")
+            {
+                //gvWitnSearch.DataBind();
+                String errMessage;
+                try
+                {
+                    txtWitnsMemberNo.Text = gvWitnSearch.SelectedRow.Cells[1].Text.Trim().Replace("&nbsp;", "");
+                    txtWitMemberNames.Text = gvWitnSearch.SelectedRow.Cells[3].Text.Trim().Replace("&nbsp;", "")
+                                            + " " + gvWitnSearch.SelectedRow.Cells[2].Text.Trim().Replace("&nbsp;", "")
+                                            ;
+                }
+                catch (Exception ex)
+                {
+                    errMessage = ex.Message.ToString();
+                    errMessage = errMessage.ToString().Replace("'", "");
+                    Page.ClientScript.RegisterStartupScript(this.GetType(), "myScript", "MyJavaFunction('Error.','" + errMessage + "');", true);
+                    System.Diagnostics.Debug.WriteLine("ERROR =====>" + ex.Message + "..\n " + errMessage);
+                }
+                txtWitnsMemberNo.Focus();
+            }
+            else if (pup.HeaderText == "Supervisors")
+            {
+                //gvSupSearch.DataBind();
+                String errMessage;
+                try
+                {
+                    txtSupervMemberNo.Text = gvSupSearch.SelectedRow.Cells[1].Text.Trim().Replace("&nbsp;", "");
+                    txtSupervMemberNames.Text = gvSupSearch.SelectedRow.Cells[3].Text.Trim().Replace("&nbsp;", "")
+                                                + " " + gvSupSearch.SelectedRow.Cells[2].Text.Trim().Replace("&nbsp;", "");
+                }
+                catch (Exception ex)
+                {
+                    errMessage = ex.Message.ToString();
+                    errMessage = errMessage.ToString().Replace("'", "");
+                    Page.ClientScript.RegisterStartupScript(this.GetType(), "myScript", "MyJavaFunction('Error.','" + errMessage + "');", true);
+                    System.Diagnostics.Debug.WriteLine("ERROR =====>" + ex.Message + "..\n " + errMessage);
+                }
+                txtSupervMemberNo.Focus();
+            }
+            else if (pup.HeaderText == "Guarantors")
+            {
+                //gvGuarSearch.DataBind();
+                SelectGuar();
+            }
+            pup.HidePopupWindow();
+        }
+        
+        protected void btnPopCancel_Click(object sender, EventArgs e)
+        {
+            pup.HidePopupWindow();
         }
 
         protected String v_update_type;
@@ -182,52 +316,23 @@ namespace SaccoApp
         protected void gvWitnSearch_SelectedIndexChanged(object sender, EventArgs e)
         {
 
-            String errMessage;
-            try
-            {
-                txtWitnsMemberNo.Text = gvWitnSearch.SelectedRow.Cells[1].Text.Trim().Replace("&nbsp;", "");
-                txtWitMemberNames.Text = gvWitnSearch.SelectedRow.Cells[3].Text.Trim().Replace("&nbsp;", "")
-                                        + " " + gvWitnSearch.SelectedRow.Cells[2].Text.Trim().Replace("&nbsp;", "")
-                                        ;
-            }
-            catch (Exception ex)
-            {
-                errMessage = ex.Message.ToString();
-                errMessage = errMessage.ToString().Replace("'", "");
-                Page.ClientScript.RegisterStartupScript(this.GetType(), "myScript", "MyJavaFunction('Error.','" + errMessage + "');", true);
-                System.Diagnostics.Debug.WriteLine("ERROR =====>" + ex.Message + "..\n " + errMessage);
-
-
-            }
         }
 
         protected void gvSupSearch_SelectedIndexChanged(object sender, EventArgs e)
         {
 
-            String errMessage;
-            try
-            {
-                txtSupervMemberNo.Text = gvSupSearch.SelectedRow.Cells[1].Text.Trim().Replace("&nbsp;", "");
-                txtSupervMemberNames.Text = gvSupSearch.SelectedRow.Cells[3].Text.Trim().Replace("&nbsp;", "")
-                                            + " " + gvSupSearch.SelectedRow.Cells[2].Text.Trim().Replace("&nbsp;", "");
-            }
-            catch (Exception ex)
-            {
-                errMessage = ex.Message.ToString();
-                errMessage = errMessage.ToString().Replace("'", "");
-                Page.ClientScript.RegisterStartupScript(this.GetType(), "myScript", "MyJavaFunction('Error.','" + errMessage + "');", true);
-                System.Diagnostics.Debug.WriteLine("ERROR =====>" + ex.Message + "..\n " + errMessage);
-
-
-            }
         }
 
         protected void gvGuarSearch_SelectedIndexChanged(object sender, EventArgs e)
         {
 
+        }
+        protected void SelectGuar()
+        {
+
             String errMessage;
-            decimal v_InitShares=0, v_tot_contrib=0, v_tot_shares=0, v_GuarShareRatio= 0;
-            decimal v_AvailableAmt = 0, v_OtherGuarAmt=0;
+            decimal v_InitShares = 0, v_tot_contrib = 0, v_tot_shares = 0, v_GuarShareRatio = 0;
+            decimal v_AvailableAmt = 0, v_OtherGuarAmt = 0;
             txtAllocatedAmt.Enabled = true;
 
             try
@@ -306,7 +411,7 @@ namespace SaccoApp
 
                     #region GetOtherGuaranteedLoanAmount
                     //------ GetOtherGuaranteedLoanAmount -------------------------------
-                    query = "select sum(lg.Amount) from BS_LOANGUAR lg where lg.LoanNo <> '"+ txtLoanNo.Text +"' and lg.MemberNo= '" + txtGuarMemberNo.Text + "'";
+                    query = "select sum(lg.Amount) from BS_LOANGUAR lg where lg.LoanNo <> '" + txtLoanNo.Text + "' and lg.MemberNo= '" + txtGuarMemberNo.Text + "'";
                     cmd = new SqlCommand(query,
                                     new SqlConnection(GetConnectionString()));
                     cmd.CommandType = CommandType.Text;
@@ -366,9 +471,9 @@ namespace SaccoApp
                     //------ End GetGuarantorShareRatio -------------------------------
                     #endregion
 
-                    System.Diagnostics.Debug.WriteLine("=====> Additions v_InitShares="+ v_InitShares.ToString()+ " v_tot_contrib=" + v_tot_contrib.ToString());
+                    System.Diagnostics.Debug.WriteLine("=====> Additions v_InitShares=" + v_InitShares.ToString() + " v_tot_contrib=" + v_tot_contrib.ToString());
                     v_tot_shares = v_InitShares + v_tot_contrib;
-                    System.Diagnostics.Debug.WriteLine("=====> Additions2 v_tot_shares="+ v_tot_shares.ToString()+ " v_GuarShareRatio=" + v_GuarShareRatio.ToString());
+                    System.Diagnostics.Debug.WriteLine("=====> Additions2 v_tot_shares=" + v_tot_shares.ToString() + " v_GuarShareRatio=" + v_GuarShareRatio.ToString());
                     v_tot_shares = v_tot_shares * v_GuarShareRatio;
                     System.Diagnostics.Debug.WriteLine("=====> Additions3 v_tot_shares=" + v_tot_shares.ToString() + " v_OtherGuarAmt=" + v_OtherGuarAmt.ToString());
                     v_AvailableAmt = v_tot_shares - v_OtherGuarAmt;

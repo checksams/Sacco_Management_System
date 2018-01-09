@@ -1,6 +1,11 @@
 ﻿<%@ Page Title="SACCO App" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="aspxLoanApplication.aspx.cs" Inherits="SaccoApp.aspxLoanApplication" %>
 
 <%@ Register Assembly="Microsoft.ReportViewer.WebForms, Version=12.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" Namespace="Microsoft.Reporting.WebForms" TagPrefix="rsweb" %>
+
+<%@ Register Assembly="ASP.Web.UI.PopupControl" 
+    Namespace="ASP.Web.UI.PopupControl"
+    TagPrefix="ASPP" %> 
+
 <asp:Content ID="HeaderContent" runat="server" ContentPlaceHolderID="HeadContent">
     
     <script language="JavaScript" type="text/javascript" src="/Scripts/CustomeFunctions.js">  </script>
@@ -252,7 +257,7 @@
             border-top-right-radius: 20px;
             border-bottom-left-radius: 20px;
             border-bottom-right-radius: 20px;"> 
-    <td colspan="1" style="font-weight:bolder">Pay Slips</td> 
+    <td colspan="1" style="font-weight:bolder">Reports</td> 
     <td align="right">
         <input type="Button" value="X" 
         onClick="document.getElementById('divReports1').style.visibility = 'hidden'; 
@@ -262,15 +267,16 @@
     <tr> 
     <td valign="top" style="height:100%"> 
         <rsweb:ReportViewer ID="rvAppliedLoans" runat="server" Font-Names="Verdana" Width="100%" Height="98%" bottom="0px"
-         BackColor="#ffffff" ForeColor="#000000"
+         BackColor="White" ForeColor="#000000"
         Font-Size="8pt" InteractiveDeviceInfos="(Collection)" 
         WaitMessageFont-Names="Verdana" WaitMessageFont-Size="14pt">
-            <LocalReport ReportPath="Reports/rptAppliedLoans.rdlc" >
+            <LocalReport ReportPath="Reports\rptAppliedLoans.rdlc" >
                 <DataSources>
-                    <rsweb:ReportDataSource DataSourceId="ObjectDataSource1" Name="DataSetAppLoans" />
+                    <rsweb:ReportDataSource DataSourceId="ObjectDataSource1" Name="DataSet_rptAppLoans" />
                 </DataSources>
             </LocalReport>
         </rsweb:ReportViewer>
+
     
     </td>         
     </tr>
@@ -289,32 +295,6 @@
     <tr> 
     <td>[MESSAGE]
         
-                    <asp:Panel ID="pnlWitnSearch" runat="server" Wrap="False" Visible="true" 
-                        BackColor="#99CCF0" ScrollBars="Auto" Width="100%" Height="250px">
-                        <asp:Label ID="Label2" runat="server" Text="Members" Font-Bold="true"></asp:Label><br>
-                        <asp:GridView ID="gvWitnSearch" runat="server"  CssClass="GridView1"
-                            AllowSorting="True" AutoGenerateColumns="False" 
-                            DataSourceID="SqlDataSource4"
-                            onselectedindexchanged="gvWitnSearch_SelectedIndexChanged"
-                            onitemcommand="gvWitnSearch_ItemCommand" PageSize="5">
-                            
-                            <FooterStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
-                            <RowStyle BackColor="#A2C19E"/>
-                            <PagerSettings Mode="NumericFirstLast" />
-                            <PagerStyle BackColor="#2461BF" ForeColor="White" HorizontalAlign="Center" />
-                            <SelectedRowStyle BackColor="#D1DDF1" Font-Bold="True" ForeColor="#333333" />
-                            <HeaderStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
-                            <EditRowStyle BackColor="#2461BF" />
-
-                            <Columns>
-                                <asp:CommandField ShowSelectButton="True" ButtonType="Link" SelectText="Select" />
-                                <asp:BoundField DataField="MemberNo" HeaderText="M. No." SortExpression="MemberNo" />
-                                <asp:BoundField DataField="SurName" HeaderText="Sur Name" SortExpression="SurName" />
-                                <asp:BoundField DataField="OtherNames" HeaderText="Other Names" SortExpression="OtherNames" />
-                            </Columns>
-
-                        </asp:GridView>
-                    </asp:Panel>
 
     </td> 
     </tr> 
@@ -341,32 +321,6 @@
     <tr> 
     <td>[MESSAGE]
         
-                    <asp:Panel ID="pnlSupSearch" runat="server" Wrap="False" Visible="true" 
-                        BackColor="#99CCF0" ScrollBars="Auto" Width="100%" Height="250px">
-                        <asp:Label ID="Label3" runat="server" Text="Members" Font-Bold="true"></asp:Label><br>
-                        <asp:GridView ID="gvSupSearch" runat="server"  CssClass="GridView1"
-                            AllowSorting="True" AutoGenerateColumns="False" 
-                            DataSourceID="SqlDataSource4"
-                            onselectedindexchanged="gvSupSearch_SelectedIndexChanged"
-                            onitemcommand="gvSupSearch_ItemCommand" PageSize="5">
-                            
-                            <FooterStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
-                            <RowStyle BackColor="#A2C19E"/>
-                            <PagerSettings Mode="NumericFirstLast" />
-                            <PagerStyle BackColor="#2461BF" ForeColor="White" HorizontalAlign="Center" />
-                            <SelectedRowStyle BackColor="#D1DDF1" Font-Bold="True" ForeColor="#333333" />
-                            <HeaderStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
-                            <EditRowStyle BackColor="#2461BF" />
-
-                            <Columns>
-                                <asp:CommandField ShowSelectButton="True" ButtonType="Link" SelectText="Select" />
-                                <asp:BoundField DataField="MemberNo" HeaderText="M. No." SortExpression="MemberNo" />
-                                <asp:BoundField DataField="SurName" HeaderText="Sur Name" SortExpression="SurName" />
-                                <asp:BoundField DataField="OtherNames" HeaderText="Other Names" SortExpression="OtherNames" />
-                            </Columns>
-
-                        </asp:GridView>
-                    </asp:Panel>
 
     </td> 
     </tr> 
@@ -393,32 +347,6 @@
     <tr> 
     <td>[MESSAGE]
         
-                    <asp:Panel ID="pnlGuarSearch" runat="server" Wrap="False" Visible="true" 
-                        BackColor="#99CCF0" ScrollBars="Auto" Width="100%" Height="250px">
-                        <asp:Label ID="lblGvLOV" runat="server" Text="Members" Font-Bold="true"></asp:Label><br>
-                        <asp:GridView ID="gvGuarSearch" runat="server"  CssClass="GridView1"
-                            AllowSorting="True" AutoGenerateColumns="False" 
-                            DataSourceID="SqlDataSource4"
-                            onselectedindexchanged="gvGuarSearch_SelectedIndexChanged"
-                            onitemcommand="gvGuarSearch_ItemCommand" PageSize="5">
-                            
-                            <FooterStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
-                            <RowStyle BackColor="#A2C19E"/>
-                            <PagerSettings Mode="NumericFirstLast" />
-                            <PagerStyle BackColor="#2461BF" ForeColor="White" HorizontalAlign="Center" />
-                            <SelectedRowStyle BackColor="#D1DDF1" Font-Bold="True" ForeColor="#333333" />
-                            <HeaderStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
-                            <EditRowStyle BackColor="#2461BF" />
-
-                            <Columns>
-                                <asp:CommandField ShowSelectButton="True" ButtonType="Link" SelectText="Select" />
-                                <asp:BoundField DataField="MemberNo" HeaderText="M. No." SortExpression="MemberNo" />
-                                <asp:BoundField DataField="SurName" HeaderText="Sur Name" SortExpression="SurName" />
-                                <asp:BoundField DataField="OtherNames" HeaderText="Other Names" SortExpression="OtherNames" />
-                            </Columns>
-
-                        </asp:GridView>
-                    </asp:Panel>
 
     </td> 
     </tr> 
@@ -433,6 +361,137 @@
     </table> 
     </div> 
 
+    <div> 
+        <ASPP:PopupPanel HeaderText="This is Header" ID="pup" runat="server" OnCloseWindowClick="MycloseWindow" >
+            <PopupWindow runat="server">
+                <ASPP:PopupWindow ID="PopupWindow2" 
+
+                Visible="false" runat="server">
+                    <asp:Label ID="lbl" runat="server">sssssss</asp:Label>
+                    <br />
+                    <asp:TextBox ID="txt" AutoPostBack="true" 
+
+                    runat="server"></asp:TextBox>
+                </ASPP:PopupWindow>
+                <ASPP:PopupWindow ID="PopupWindow3" runat="server">
+                    <div align="center" style="width: 500px; height: 300px">
+                        <table width="100%">
+                            <tr>
+                                <td>
+                                    <asp:Label ID="lblPopMemberNoSrch" runat="server" Text="Member No"></asp:Label>
+                                </td>
+                                <td >
+                                    <asp:TextBox ID="txtPopMemberNoSrch" runat="server" width="210px" AutoPostBack="True" OnTextChanged="searchTextChange" ></asp:TextBox>
+                                </td>
+                                <td>
+                                    <asp:Button ID="btnPopSrch" runat="server" Text="Search" OnClick="btnPopSrch_Click" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <asp:Label ID="lblPopMemberSurNameSrch" runat="server" Text="Surname"></asp:Label>
+                                </td>
+                                <td>
+                                    <asp:TextBox ID="txtPopMemberSurNameSrch" runat="server" width="210px" AutoPostBack="True"></asp:TextBox>
+                                </td>
+                                <td>
+                                    <asp:Button ID="btnOK" runat="server" Text="OK" OnClick="btnOK_Click"/>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <asp:Label ID="lblPopMemberONameSrch" runat="server" Text="Other names"></asp:Label>
+                                </td>
+                                <td>
+                                    <asp:TextBox ID="txtPopMemberONameSrch" runat="server" width="210px" AutoPostBack="True"></asp:TextBox>
+                                </td>
+                                <td>
+                                    <asp:Button ID="btnPopCancel" runat="server" Text="Cancel" OnClick="btnPopCancel_Click" />
+                                </td>
+                            </tr>
+                        </table>
+                        
+                        <asp:Panel ID="pnlWitnSearch" runat="server" Wrap="False" Visible="true" 
+                            BackColor="#99CCF0" ScrollBars="Auto" Width="100%" Height="250px">
+                            <asp:GridView ID="gvWitnSearch" runat="server"  CssClass="GridView1"
+                                AllowSorting="True" AutoGenerateColumns="False" AllowPaging="True" Width="98%"
+                                DataSourceID="SqlDataSource4"
+                                onselectedindexchanged="gvWitnSearch_SelectedIndexChanged"
+                                onitemcommand="gvWitnSearch_ItemCommand" PageSize="8">
+                            
+                                <FooterStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
+                                <RowStyle BackColor="#A2C19E"/>
+                                <PagerSettings Mode="NumericFirstLast" />
+                                <PagerStyle BackColor="#2461BF" ForeColor="White" HorizontalAlign="Center" />
+                                <SelectedRowStyle BackColor="#D1DDF1" Font-Bold="True" ForeColor="#333333" />
+                                <HeaderStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
+                                <EditRowStyle BackColor="#2461BF" />
+
+                                <Columns>
+                                    <asp:CommandField ShowSelectButton="True" ButtonType="Link" SelectText="Select" />
+                                    <asp:BoundField DataField="MemberNo" HeaderText="M. No." SortExpression="MemberNo" />
+                                    <asp:BoundField DataField="SurName" HeaderText="Sur Name" SortExpression="SurName" />
+                                    <asp:BoundField DataField="OtherNames" HeaderText="Other Names" SortExpression="OtherNames" />
+                                </Columns>
+
+                            </asp:GridView>
+                        </asp:Panel>
+                        <asp:Panel ID="pnlSupSearch" runat="server" Wrap="False" Visible="true" 
+                            BackColor="#99CCF0" ScrollBars="Auto" Width="100%" Height="250px">
+                            <asp:GridView ID="gvSupSearch" runat="server"  CssClass="GridView1"
+                                AllowSorting="True" AutoGenerateColumns="False" AllowPaging="True" Width="98%"
+                                DataSourceID="SqlDataSource4"
+                                onselectedindexchanged="gvSupSearch_SelectedIndexChanged"
+                                onitemcommand="gvSupSearch_ItemCommand" PageSize="8">
+                            
+                                <FooterStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
+                                <RowStyle BackColor="#A2C19E"/>
+                                <PagerSettings Mode="NumericFirstLast" />
+                                <PagerStyle BackColor="#2461BF" ForeColor="White" HorizontalAlign="Center" />
+                                <SelectedRowStyle BackColor="#D1DDF1" Font-Bold="True" ForeColor="#333333" />
+                                <HeaderStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
+                                <EditRowStyle BackColor="#2461BF" />
+
+                                <Columns>
+                                    <asp:CommandField ShowSelectButton="True" ButtonType="Link" SelectText="Select" />
+                                    <asp:BoundField DataField="MemberNo" HeaderText="M. No." SortExpression="MemberNo" />
+                                    <asp:BoundField DataField="SurName" HeaderText="Sur Name" SortExpression="SurName" />
+                                    <asp:BoundField DataField="OtherNames" HeaderText="Other Names" SortExpression="OtherNames" />
+                                </Columns>
+
+                            </asp:GridView>
+                        </asp:Panel>
+                        
+                        <asp:Panel ID="pnlGuarSearch" runat="server" Wrap="False" Visible="true" 
+                            BackColor="#99CCF0" ScrollBars="Auto" Width="100%" Height="250px">
+                            <asp:GridView ID="gvGuarSearch" runat="server"  CssClass="GridView1"
+                                AllowSorting="True" AutoGenerateColumns="False" AllowPaging="True" Width="98%"
+                                DataSourceID="SqlDataSource4"
+                                onselectedindexchanged="gvGuarSearch_SelectedIndexChanged"
+                                onitemcommand="gvGuarSearch_ItemCommand" PageSize="8">
+                            
+                                <FooterStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
+                                <RowStyle BackColor="#A2C19E"/>
+                                <PagerSettings Mode="NumericFirstLast" />
+                                <PagerStyle BackColor="#2461BF" ForeColor="White" HorizontalAlign="Center" />
+                                <SelectedRowStyle BackColor="#D1DDF1" Font-Bold="True" ForeColor="#333333" />
+                                <HeaderStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
+                                <EditRowStyle BackColor="#2461BF" />
+
+                                <Columns>
+                                    <asp:CommandField ShowSelectButton="True" ButtonType="Link" SelectText="Select" />
+                                    <asp:BoundField DataField="MemberNo" HeaderText="M. No." SortExpression="MemberNo" />
+                                    <asp:BoundField DataField="SurName" HeaderText="Sur Name" SortExpression="SurName" />
+                                    <asp:BoundField DataField="OtherNames" HeaderText="Other Names" SortExpression="OtherNames" />
+                                </Columns>
+
+                            </asp:GridView>
+                        </asp:Panel>
+                    </div>
+                </ASPP:PopupWindow>
+            </PopupWindow>
+        </ASPP:PopupPanel>
+    </div> 
     
 
     
@@ -481,6 +540,7 @@
                             <Items>
                                 <asp:MenuItem Text="Reports" Value="Reports">
                                     <asp:MenuItem Text="Applied Loans Report" Value="Applied Loans Report" ></asp:MenuItem>
+                                    <asp:MenuItem Text="Guarantor Listing Report" Value="Guarantor Listing Report" ></asp:MenuItem>
                                 </asp:MenuItem>
                             </Items>
                         </asp:Menu>
@@ -528,12 +588,14 @@
                                 <asp:ControlParameter ControlID="txtOtherNameSrch" DefaultValue="%" Name="OtherNames" PropertyName="Text" Type="String" />
                                 <asp:ControlParameter ControlID="txtIDNoSrch" DefaultValue="%" Name="IDNo" PropertyName="Text" Type="String" />
                             </SelectParameters>
-                        </asp:SqlDataSource>
-                        <asp:SqlDataSource ID="SqlDataSource4" runat="server" ConnectionString="<%$ ConnectionStrings:serenehrdbConnectionString %>" SelectCommand="BS_get_MEMBERS" SelectCommandType="StoredProcedure">
+                        </asp:SqlDataSource>                        
+                        
+                        <asp:SqlDataSource ID="SqlDataSource4" runat="server" ConnectionString="<%$ ConnectionStrings:serenehrdbConnectionString %>" 
+                            SelectCommand="BS_get_MEMBERS" SelectCommandType="StoredProcedure">
                             <SelectParameters>
-                                <asp:Parameter DefaultValue="%" Name="MemberNo" Type="String" />
-                                <asp:Parameter DefaultValue="%" Name="SurName" Type="String" />
-                                <asp:Parameter DefaultValue="%" Name="OtherNames" Type="String" />
+                                <asp:ControlParameter ControlID="txtPopMemberNoSrch0" DefaultValue="" Name="MemberNo" PropertyName="Text" Type="String" />
+                                <asp:ControlParameter ControlID="txtPopMemberSurNameSrch0" DefaultValue="" Name="SurName" PropertyName="Text" Type="String" />
+                                <asp:ControlParameter ControlID="txtPopMemberONameSrch0" DefaultValue="" Name="OtherNames" PropertyName="Text" Type="String" />
                                 <asp:Parameter DefaultValue="%" Name="IDNo" Type="String" />
                             </SelectParameters>
                         </asp:SqlDataSource>
@@ -575,6 +637,7 @@
                                                      
                                 <button type="button" id="btnViewHideMemberLoanDtls" onclick="fnViewHideMemberLoanDtls()" 
                                     style="width: 100%; text-align:left; background-color:#7AC1C7 ">View/Hide Member Loan Details</button>
+                    
                                 <table style="width: 80%; ">
                                     <tr>
                                         <td valign="top">
@@ -834,7 +897,7 @@ SELECT LoanCode, LoanType FROM BS_LOANTYPE"></asp:SqlDataSource>
                                         </td>
                                         <td>
                                             <asp:TextBox ID="txtWitnsMemberNo" runat="server" Width="100px" Enabled="true" Visible="true" > </asp:TextBox> 
-                                            <img alt="Member" src="/Images/people.ico" onclick="fnWitnessSearch('Witness','')"/>  
+                                            <asp:ImageButton ID="imgBtnWitnsMemberNo" runat="server" ImageUrl="/Images/people.ico" AlternateText="Members" OnClick="popupWitnessSearch" />
                                         </td>
                                         <td>
                                             <asp:TextBox ID="txtWitMemberNames" runat="server" Width="200px" Enabled="true" Visible="true" > </asp:TextBox> 
@@ -855,7 +918,7 @@ SELECT LoanCode, LoanType FROM BS_LOANTYPE"></asp:SqlDataSource>
                                         </td>
                                         <td>
                                             <asp:TextBox ID="txtSupervMemberNo" runat="server" Width="100px" Enabled="true" Visible="true" > </asp:TextBox> 
-                                            <img alt="Member" src="/Images/people.ico" onclick="fnSupervisorSearch('Supervisor','')"/>  
+                                            <asp:ImageButton ID="imgBtnSupMemberNo" runat="server" ImageUrl="/Images/people.ico" AlternateText="Members" OnClick="popupSupervSearch" />
                                         </td>
                                         <td>
                                             <asp:TextBox ID="txtSupervMemberNames" runat="server" Width="200px" Enabled="true" Visible="true" > </asp:TextBox> 
@@ -972,8 +1035,8 @@ SELECT LoanCode, LoanType FROM BS_LOANTYPE"></asp:SqlDataSource>
                                             <asp:Label ID="lblGuarMemberNo" runat="server" Text="Guarentor Member No" Width="130px" Font-Bold="True"></asp:Label>
                                         </td>
                                         <td>
-                                            <asp:TextBox ID="txtGuarMemberNo" runat="server" Width="100px" Enabled="false" > </asp:TextBox>  
-                                            <img alt="Member" src="/Images/people.ico" onclick="fnGuarantorSearch('Guarantors','')"/>  
+                                            <asp:TextBox ID="txtGuarMemberNo" runat="server" Width="100px" Enabled="false" > </asp:TextBox> 
+                                            <asp:ImageButton ID="imgBtnGuarMemberNo" runat="server" ImageUrl="/Images/people.ico" AlternateText="Members" OnClick="popupGuarSearch" /> 
                                         </td>
                                         <td>
                                             <asp:Label ID="lblGuarMemberNames" runat="server" Text="Guarantor Names" Width="100px" Font-Bold="True"></asp:Label>
@@ -1046,7 +1109,38 @@ SELECT LoanCode, LoanType FROM BS_LOANTYPE"></asp:SqlDataSource>
     </table>
 
 
-
+    
+    <table width="100%" visible="false" style="visibility:collapse">
+        <tr>
+            <td>
+                <asp:Label ID="lblPopMemberNoSrch0" runat="server" Text="Member No"></asp:Label>
+            </td>
+            <td>
+                <asp:TextBox ID="txtPopMemberNoSrch0" runat="server" width="210px" AutoPostBack="True"></asp:TextBox>
+            </td>
+            <td>
+                <asp:Button ID="btnPopSrch0" runat="server" Text="Search" OnClick="btnPopSrch_Click" />
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <asp:Label ID="lblPopMemberSurNameSrch0" runat="server" Text="Surname"></asp:Label>
+            </td>
+            <td>
+                <asp:TextBox ID="txtPopMemberSurNameSrch0" runat="server" width="210px" AutoPostBack="True"></asp:TextBox>
+            </td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>
+                <asp:Label ID="lblPopMemberONameSrch0" runat="server" Text="Other names"></asp:Label>
+            </td>
+            <td>
+                <asp:TextBox ID="txtPopMemberONameSrch0" runat="server" width="210px" AutoPostBack="True"></asp:TextBox>
+            </td>
+            <td></td>
+        </tr>
+    </table>
 
 </asp:Content>
 
